@@ -1,0 +1,444 @@
+/* Terminal Portfolio CSS - Neovim/Vim/Linux Aesthetic */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --deep-purple: #2e1a47;
+    --medium-purple: #5e3c88;
+    --light-purple: #a58add;
+    --text-primary: #e4d4f4;
+    --text-secondary: #b8a5d1;
+    --text-accent: #a58add;
+    --border-color: #5e3c88;
+    --terminal-bg: #1a0f2e;
+    --pane-bg: #2e1a47;
+    --cursor-color: #a58add;
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    background: linear-gradient(135deg, var(--terminal-bg) 0%, var(--deep-purple) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+/* Add subtle scanline effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(165, 138, 221, 0.03) 2px,
+        rgba(165, 138, 221, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.terminal-container {
+    max-width: 1400px;
+    margin: 20px auto;
+    background: var(--terminal-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 
+        0 0 20px rgba(165, 138, 221, 0.2),
+        inset 0 0 0 1px rgba(165, 138, 221, 0.1);
+    min-height: calc(100vh - 40px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Terminal Header */
+.terminal-header {
+    background: var(--deep-purple);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px 6px 0 0;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.control.close { background: #ff5f56; }
+.control.minimize { background: #ffbd2e; }
+.control.maximize { background: #27ca3f; }
+
+.terminal-title {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Navigation Menu */
+.terminal-nav {
+    background: rgba(94, 60, 136, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prompt-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prompt {
+    color: var(--light-purple);
+    font-weight: 600;
+}
+
+.nav-text {
+    color: var(--text-secondary);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: rgba(94, 60, 136, 0.2);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:hover {
+    background: rgba(165, 138, 221, 0.2);
+    border-color: var(--light-purple);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.nav-btn.active {
+    background: var(--light-purple);
+    color: var(--deep-purple);
+    border-color: var(--light-purple);
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 14px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* ASCII Art */
+.ascii-art {
+    color: var(--light-purple);
+    margin-bottom: 30px;
+    font-size: 10px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.ascii-art pre {
+    font-family: inherit;
+}
+
+/* Content Sections */
+.content-sections {
+    position: relative;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: rgba(94, 60, 136, 0.1);
+    border-left: 3px solid var(--light-purple);
+    border-radius: 0 4px 4px 0;
+}
+
+.section-header .prompt {
+    color: var(--light-purple);
+    font-weight: 600;
+}
+
+.command-text {
+    color: var(--text-primary);
+}
+
+.file-content {
+    background: rgba(46, 26, 71, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.file-content pre {
+    color: var(--text-primary);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.project-card {
+    background: rgba(94, 60, 136, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-card:hover {
+    border-color: var(--light-purple);
+    box-shadow: 0 5px 15px rgba(165, 138, 221, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.tech-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.project-header h3 {
+    color: var(--light-purple);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.project-description {
+    line-height: 1.6;
+}
+
+.project-description p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tech-tag {
+    background: rgba(165, 138, 221, 0.2);
+    color: var(--light-purple);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.project-link {
+    color: var(--light-purple);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* Status Bar (Vim-like) */
+.status-bar {
+    background: var(--deep-purple);
+    border-top: 1px solid var(--border-color);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 0 0 6px 6px;
+}
+
+.mode {
+    color: var(--light-purple);
+    font-weight: 600;
+}
+
+.status-info {
+    display: flex;
+    gap: 15px;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terminal-container {
+        margin: 10px;
+        min-height: calc(100vh - 20px);
+    }
+    
+    .terminal-header {
+        padding: 10px 15px;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .terminal-nav {
+        padding: 12px 15px;
+    }
+    
+    .status-bar {
+        padding: 6px 15px;
+        font-size: 11px;
+    }
+    
+    .ascii-art {
+        font-size: 8px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-card {
+        padding: 15px;
+    }
+    
+    .status-info {
+        gap: 10px;
+    }
+    
+    .nav-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .ascii-art {
+        font-size: 6px;
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .tech-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .nav-btn {
+        justify-content: center;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--deep-purple);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--light-purple);
+}
+
+/* Focus states for accessibility */
+.project-link:focus,
+.control:focus,
+.nav-btn:focus {
+    outline: 2px solid var(--light-purple);
+    outline-offset: 2px;
+}

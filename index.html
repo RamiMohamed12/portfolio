@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~/rami-mohamed - Terminal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="terminal-container">
+        <!-- Top bar with terminal controls -->
+        <div class="terminal-header">
+            <div class="terminal-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="terminal-title">rami@portfolio: ~/dev</div>
+        </div>
+
+        <!-- Navigation Menu (Terminal Style) -->
+        <div class="terminal-nav">
+            <div class="nav-section">
+                <div class="prompt-line">
+                    <span class="prompt">rami@portfolio:~$</span>
+                    <span class="nav-text">ls ~/portfolio</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-section="about" onclick="showSection('about')">
+                        <span class="nav-icon">📁</span> about.txt
+                    </button>
+                    <button class="nav-btn" data-section="projects" onclick="showSection('projects')">
+                        <span class="nav-icon">📂</span> projects/
+                    </button>
+                    <button class="nav-btn" data-section="skills" onclick="showSection('skills')">
+                        <span class="nav-icon">📄</span> skills.txt
+                    </button>
+                    <button class="nav-btn" data-section="contact" onclick="showSection('contact')">
+                        <span class="nav-icon">📧</span> contact.txt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- ASCII Art Header -->
+            <div class="ascii-art">
+                <pre>
+██████╗  █████╗ ███╗   ███╗██╗    ███╗   ███╗ ██████╗ ██╗  ██╗ █████╗ ███╗   ███╗███████╗██████╗ 
+██╔══██╗██╔══██╗████╗ ████║██║    ████╗ ████║██╔═══██╗██║  ██║██╔══██╗████╗ ████║██╔════╝██╔══██╗
+██████╔╝███████║██╔████╔██║██║    ██╔████╔██║██║   ██║███████║███████║██╔████╔██║█████╗  ██║  ██║
+██╔══██╗██╔══██║██║╚██╔╝██║██║    ██║╚██╔╝██║██║   ██║██╔══██║██╔══██║██║╚██╔╝██║██╔══╝  ██║  ██║
+██║  ██║██║  ██║██║ ╚═╝ ██║██║    ██║ ╚═╝ ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║███████╗██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝    ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝ 
+                </pre>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <!-- About Section -->
+                <div class="content-section active" id="about-section">
+                    <div class="section-header">
+                        <span class="prompt">rami@portfolio:~$</span>
+                        <span class="command-text">cat about.txt</span>
+                    </div>
+                    <div class="file-content">
+                        <pre>
+# About Rami Mohamed
+
+Full-Stack Developer & Terminal Enthusiast
+
+I'm a passionate developer who thrives in terminal-first environments,
+building efficient tools and automation workflows. My expertise spans
+from mobile development with Flutter to system-level programming in Rust.
+
+## Background
+- Computer Science student with focus on systems programming
+- Extensive experience with Linux environments and Bash scripting
+- Comfortable working entirely from the terminal using Neovim
+- Strong advocate for developer tooling and workflow automation
+
+## Philosophy
+"Code is poetry written for machines to execute and humans to understand."
+
+I believe in writing clean, efficient code and building tools that make
+developers' lives easier. Whether it's a mobile app, web service, or 
+CLI tool, I focus on user experience and maintainable architecture.
+
+## Current Focus
+- Building developer tools and automation scripts
+- Exploring systems programming with Rust
+- Contributing to open-source projects
+- Improving terminal-based workflows
+                        </pre>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="content-section" id="projects-section">
+                    <div class="section-header">
+                        <span class="prompt">rami@portfolio:~$</span>
+                        <span class="command-text">ls -la projects/</span>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>CNR Internship App</h3>
+                            </div>
+                            <div class="project-description">
+                                <p>Mobile application built for internal use at Caisse Nationale des Retraites. 
+                                Features a Flutter frontend with smooth UI/UX and a robust Node.js backend 
+                                handling authentication, data management, and API services.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Flutter</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">REST API</span>
+                                </div>
+                                <a href="https://github.com/RamiMohamed12/stage" class="project-link" target="_blank">
+                                    → github.com/RamiMohamed12/stage
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>RustCommandLogger</h3>
+                            </div>
+                            <div class="project-description">
+                                <p>Linux CLI tool that logs every shell command execution with detailed metadata.
+                                Includes a web interface for visualizing command history, patterns, and usage statistics.
+                                Perfect for system monitoring and workflow analysis.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Rust</span>
+                                    <span class="tech-tag">Linux</span>
+                                    <span class="tech-tag">Web UI</span>
+                                    <span class="tech-tag">CLI</span>
+                                </div>
+                                <a href="https://github.com/RamiMohamed12/RustCommandLogger" class="project-link" target="_blank">
+                                    → github.com/RamiMohamed12/RustCommandLogger
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <img src="typescript-svgrepo-com(2).svg" alt="TypeScript" class="tech-icon">
+                                <h3>vibetyping</h3>
+                            </div>
+                            <div class="project-description">
+                                <p>A clean, distraction-free typing playground built with React. Focuses on providing
+                                a smooth typing experience with customizable themes, real-time WPM tracking, and
+                                support for various text sources.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">CSS3</span>
+                                </div>
+                                <a href="https://github.com/RamiMohamed12/vibetyping" class="project-link" target="_blank">
+                                    → github.com/RamiMohamed12/vibetyping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="content-section" id="skills-section">
+                    <div class="section-header">
+                        <span class="prompt">rami@portfolio:~$</span>
+                        <span class="command-text">cat skills.txt</span>
+                    </div>
+                    <div class="file-content">
+                        <pre>
+# Technical Skills & Stack
+
+## Programming Languages
+├── Rust              ████████████████████ (Expert)
+├── TypeScript        ██████████████████   (Advanced)
+├── JavaScript        ██████████████████   (Advanced)
+├── HTML/CSS          ████████████████████ (Expert)
+└── Bash              ███████████████████  (Advanced)
+
+## Frameworks & Libraries
+├── Flutter           ██████████████████   (Advanced)
+├── Node.js           ██████████████████   (Advanced)
+├── React             █████████████████    (Advanced)
+└── Express.js        ████████████████     (Intermediate)
+
+## Databases
+├── MySQL/MariaDB     █████████████████    (Advanced)
+├── SQLite            ████████████████     (Intermediate)
+└── MongoDB           ██████████████       (Intermediate)
+
+## Tools & Environment
+├── Linux             ████████████████████ (Expert)
+├── Neovim            ████████████████████ (Expert)
+├── Git               ██████████████████   (Advanced)
+├── Docker            ███████████████      (Intermediate)
+├── Bash Scripting    ██████████████████   (Advanced)
+└── Terminal Workflow ████████████████████ (Expert)
+
+## Specializations
+• Terminal-first development environments
+• Building developer tooling and automation
+• System-level programming and CLI applications
+• Cross-platform mobile development
+• RESTful API design and implementation
+• Linux system administration and scripting
+
+## Philosophy
+Comfortable working in terminal-first environments, building developer 
+tooling, and scripting automation workflows. I believe in leveraging 
+the command line for maximum productivity and creating tools that 
+enhance the developer experience.
+                        </pre>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="content-section" id="contact-section">
+                    <div class="section-header">
+                        <span class="prompt">rami@portfolio:~$</span>
+                        <span class="command-text">cat contact.txt</span>
+                    </div>
+                    <div class="file-content">
+                        <pre>
+# Contact Information
+
+## Professional Links
+├── GitHub:   <a href="https://github.com/RamiMohamed12" target="_blank">Github</a>
+├── LinkedIn:   <a href="https://www.linkedin.com/in/rami-mohamed-37ab73328/" target="_blank"></a>LinkedIn</a>
+├── Email:      <a href="">roomierami00@gmail.com</a>
+
+## Preferred Communication
+• Email for professional inquiries
+• GitHub for project collaboration
+• Terminal/SSH for development discussions 😉
+
+## Location
+Alger 16 
+
+## Let's Connect!
+Feel free to reach out if you're interested in:
+• Full-stack development projects
+• Open-source collaboration
+• Terminal/CLI tool development
+• Systems programming discussions
+• Code reviews and pair programming
+
+---
+$ echo "Thanks for visiting my terminal portfolio!"
+$ exit
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom status bar (Vim-like) -->
+        <div class="status-bar">
+            <div class="mode-indicator">
+                <span class="mode">-- NORMAL --</span>
+            </div>
+            <div class="status-info">
+                <span>~/portfolio</span>
+                <span>|</span>
+                <span>utf-8</span>
+                <span>|</span>
+                <span>Ready</span>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
